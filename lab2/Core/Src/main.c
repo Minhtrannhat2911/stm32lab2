@@ -97,11 +97,21 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  settimer1(25);
+  settimer1(1000);
+  settimer2(100);
+  settimer3(25);
   int hour = 15, minute = 8, second = 50;
+  updateClockbuffer(hour, minute);
+  const int MAX_LED = 4;
+  int index_led = 0;
 
   while (1)
   {
+	  if(timer1_flag == 1){
+		  HAL_GPIO_TogglePin(GPIOA, DOT_Pin);
+		  settimer1(1000);
+	  }
+	  if(timer2_flag == 1){
 	  second++;
 	  	  if(second >= 60){
 	  		  second = 0;
@@ -115,7 +125,18 @@ int main(void)
 	  		  hour = 0;
 	  	  }
 	  	  updateClockbuffer(hour, minute);
-	  	  HAL_Delay(1000);
+	  	  settimer2(100);
+	  }
+	  if(timer3_flag == 1){
+		  update7SEG(index_led);
+		  index_led++;
+		  if(index_led >= MAX_LED)
+		  {
+			  index_led = 0;
+		  }
+		  settimer3(25);
+	  }
+
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -259,22 +280,8 @@ static void MX_GPIO_Init(void)
 /* USER CODE BEGIN 4 */
 const int MAX_LED = 4;
 int index_led = 0;
-int led_buffer [4] = {1 , 7 , 0 , 3};
+int led_buffer [4] = {0};
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
-	static int timer_counter = -250;  // Biến đếm thời gian*/
-	if (timer1_flag == 1){
-		  timer_counter += 250;  // Cộng dồn thời gian, mỗi lần tăng thêm 50ms
-	if (timer_counter >= 1000) {
-		 HAL_GPIO_TogglePin(GPIOA, DOT_Pin);  // Đổi trạng thái LED DOT
-		 timer_counter = 0;  // Reset lại biến đếm sau 1 giây
-							}
-		  update7SEG(index_led);
-		  index_led++;
-		  if( index_led >= MAX_LED){
-			  index_led = 0;
-		  }
-      settimer1(25);
-}
 	timerun();
 }
 void display7SEG(int num) {
