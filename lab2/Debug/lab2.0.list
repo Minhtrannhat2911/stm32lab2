@@ -661,9 +661,9 @@ void display7SEG(int num) {
               break;
  800049a:	e011      	b.n	80004c0 <display7SEG+0xcc>
           case 8:
-              HAL_GPIO_WritePin(GPIOB,  SEG0_Pin | SEG1_Pin | SEG2_Pin | SEG3_Pin | SEG4_Pin | SEG5_Pin, GPIO_PIN_RESET);
+              HAL_GPIO_WritePin(GPIOB,  SEG0_Pin | SEG1_Pin | SEG2_Pin | SEG3_Pin | SEG4_Pin | SEG5_Pin | SEG6_Pin, GPIO_PIN_RESET);
  800049c:	2200      	movs	r2, #0
- 800049e:	213f      	movs	r1, #63	; 0x3f
+ 800049e:	217f      	movs	r1, #127	; 0x7f
  80004a0:	4809      	ldr	r0, [pc, #36]	; (80004c8 <display7SEG+0xd4>)
  80004a2:	f000 fd23 	bl	8000eec <HAL_GPIO_WritePin>
               break;

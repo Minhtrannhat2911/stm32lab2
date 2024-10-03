@@ -305,7 +305,7 @@ void display7SEG(int num) {
               HAL_GPIO_WritePin(GPIOB,  SEG0_Pin | SEG1_Pin | SEG2_Pin, GPIO_PIN_RESET);
               break;
           case 8:
-              HAL_GPIO_WritePin(GPIOB,  SEG0_Pin | SEG1_Pin | SEG2_Pin | SEG3_Pin | SEG4_Pin | SEG5_Pin, GPIO_PIN_RESET);
+              HAL_GPIO_WritePin(GPIOB,  SEG0_Pin | SEG1_Pin | SEG2_Pin | SEG3_Pin | SEG4_Pin | SEG5_Pin | SEG6_Pin, GPIO_PIN_RESET);
               break;
           case 9:
               HAL_GPIO_WritePin(GPIOB,  SEG0_Pin | SEG1_Pin | SEG2_Pin | SEG3_Pin | SEG5_Pin | SEG6_Pin, GPIO_PIN_RESET);
