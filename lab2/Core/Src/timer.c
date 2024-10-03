@@ -17,11 +17,11 @@ int timer3_flag = 0;
 int timer4_flag = 0;
 
 void settimer1(int duration){
-	time_counter1 = duration/time_cycle;
+	time_counter1 = duration;
 	timer1_flag = 0;
 }
 void settimer2(int duration){
-	time_counter2 = duration/time_cycle;
+	time_counter2 = duration;
 	timer2_flag = 0;
 }
 void settimer3(int duration){
